@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://matcha.mizu.sh/matcha.css">
+    
+</head>
+
+<body>
+    <h1 class="">Exchange rate</h1>
+    Amout: <br />
+    <input type="text" id="amount" style="width:200px"><br />
+    Currency: <br />
+    <select id="currency" style="width:200px">
+        <option value="0" disabled>Select a currency</option>
+        <option value="usd">USD</option>
+        <option value="gbp">GBP</option>
+        <option value="eur">EUR</option>
+        <option value="afn">AFN</option>
+        <option value="aed">AED</option>
+    </select><br />
+    <div id="result" style="display:none">
+        Total Amount: <span id="total"></span> <br />
+    </div>
+    <button class="danger" onclick="getRate()">Get Total</button>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        async function getRate(){
+            const amount = document.getElementById('amount').value
+            const currency = document.getElementById('currency').value
+            
+            const apiUrl = `https://api.exchangerate-api.com/v4/latest/${currency}`
+            const currencyData = await axios.get(apiUrl)
+            const conversionRate = currencyData.data.rates.BDT
+            const total = amount * conversionRate
+            document.getElementById('total').innerHTML = total
+            
+            document.getElementById('result').style.display='block'
+
+            
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+{
+  "books": [
+    {
+      "title": "Refactoring - XYZ",
+      "author": "Martin Fowler - Y",
+      "id": "1"
+    },
+    {
+      "id": "3246",
+      "title": "mastering javascript",
+      "author": "someone"
+    },
+    {
+      "id": "5",
+      "title": "mastering php",
+      "author": "someone"
+    },
+    {
+      "id": "c4a5",
+      "title": "Sea Wolf",
+      "author": "Jack London"
+    },
+    {
+      "id": "6",
+      "title": "She",
+      "author": "Henry Rider Haggard"
+    },
+    {
+      "id": "7",
+      "title": "XYZ",
+      "author": "ABC"
+    }
+  ],
+  "users": [
+    {
+      "name": "John Doe",
+      "email": "john@doe.com",
+      "id": "1"
+    },
+    {
+      "name": "Jane Smith",
+      "email": "jane@doe.com",
+      "id": "2"
+    }
+  ]
+}

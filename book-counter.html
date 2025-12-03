@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://matcha.mizu.sh/matcha.css">
+</head>
+
+<body>
+    <h1>Add New Book</h1>
+    <input type="text" id="title" placeholder="Book Title"><br />
+    <input type="text" id="author" placeholder="Book Author"><br />
+    <button onclick="addBook()">Add Book</button>
+    <hr>
+    <h1>Delete Book</h1>
+    <!-- <input type="text" id="bookid" placeholder="Book ID"><br /> -->
+     <select id="bookid"></select>
+    <button onclick="deleteBook()">Delete Book</button>
+    <script>
+        let bookCount = 0
+        let nextId = 0
+        async function prepareBooks(){
+            const apiUrl = 'http://localhost:3000/books'
+            const response = await (fetch(apiUrl))
+            const data = await response.json()
+            let opts = ''
+            for (book in data){
+                opts  += `<option value='${data[book].id}'>${data[book].title}</option>`
+            }
+            document.getElementById('bookid').innerHTML = opts
+        }
+        async function getCount() {
+            const apiUrl = 'http://localhost:3000/books'
+            const response = await (fetch(apiUrl))
+            const data = await response.json()
+            bookCount = data.length
+            nextId = bookCount + 1 + ""
+            console.log(bookCount, nextId);
+        }
+        async function addBook() {
+            const apiUrl = 'http://localhost:3000/books'
+            const title = document.getElementById('title').value
+            const author = document.getElementById('author').value
+            await getCount()
+            const postData = { title, author, 'id': nextId }
+            await fetch(apiUrl, {
+                method: 'POST', //PUT PATCH
+                body: JSON.stringify(postData)
+            })
+            alert("Book Added")
+        }
+        async function deleteBook() {
+            const id = document.getElementById('bookid').value
+            const apiUrl = `http://localhost:3000/books/${id}`
+            await fetch(apiUrl, {
+                method: 'DELETE',
+            })
+            alert("Book Deleted")
+        }
+
+        getCount()
+        prepareBooks()
+    </script>
+</body>
+
+</html>
