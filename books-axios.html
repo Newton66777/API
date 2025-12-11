@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://matcha.mizu.sh/matcha.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<br>
+  <h1>New Book Add Axios</h1>
+  <input type="text" id="title" placeholder="Book Tital" style="width: 200px;"></br>
+  <input type="text" id="author" placeholder="Book Author" style="width: 200px;"></br>
+  <button onclick="addBook()">Add Book</button>
+  <hr>
+  <h1> Book Delete Axios</h1>
+  <input type="text" id="bookid" placeholder="Book ID" style="width: 200px;"></br>
+  <button onclick="deleteBook()">Delete Book</button>
+
+  <script>
+    async function addBook(){
+      const apiUrl=`http://localhost:3000/books`
+      const title=document.getElementById('title').value
+      const author=document.getElementById('author').value
+      const postData={title, author}
+
+      await axios.post(apiUrl, postData)
+      alert("Book Added")
+    }
+      
+    async function deleteBook(){
+      const id=document.getElementById('bookid').value
+      const apiUrl=`http://localhost:3000/books/${id}`
+      await axios.delete(apiUrl)
+      alert("Book deleted")
+    }
+  </script>
+</body>
+</html>
