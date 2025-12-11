@@ -1,4 +1,4 @@
-const apiUrl=`http://localhost:3000/books'
+const apiUrl='http://localhost:3000/books'
 const newBook={
   "titel":"java2",
   "author":"someone",
