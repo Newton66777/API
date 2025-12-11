@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exchange Rate</title>
+  <link rel="stylesheet" href="https://matcha.mizu.sh/matcha.css">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h1>Exchange Rate</h1>
+  Amount: <br/>
+  <input type="text" id="amount" style="width: 200px;"><br/>
+  Currency: <br/>
+  <select  id="Currency" style="width: 200px;">
+    <option value="0">Select a Currency</option>
+    <option value="usd">USD</option>
+    <option value="aed">AED</option>
+    <option value="afn">AFN</option>
+    <option value="all">ALL</option>
+    <option value="amd">AMD</option>
+    <option value="ang">ANG</option>
+    <option value="aoa">AOA</option>
+    <option value="ars">ARS</option>
+    <option value="aud">AUD</option>
+    <option value="awg">AWG</option>
+    <option value="azn">AZN</option>
+    <option value="bam">BAM</option>
+    <option value="bbd">BBD</option>
+    <option value="bdt">BDT</option>
+    <option value="bgn">BGN</option>
+    <option value="bhd">BHD</option>
+    <option value="bif">BIF</option>
+    <option value="bmd">BMD</option>
+    <option value="bnd">BND</option>
+    <option value="bob">BOB</option>
+    <option value="brl">BRL</option>
+    <option value="bsd">BSD</option>
+    <option value="btn">BTN</option>
+    <option value="bwp">BWP</option>
+    <option value="byn">BYN</option>
+    <option value="bzd">BZD</option>
+    <option value="cad">CAD</option>
+    <option value="cdf">CDF</option>
+    <option value="chf">CHF</option>
+    <option value="clf">CLF</option>
+    <option value="cnh">CNH</option>
+    <option value="cny">CNY</option>
+    <option value="cop">COP</option>
+    <option value="crc">CRC</option>
+    <option value="cup">CUP</option>
+    <option value="cve">CVE</option>
+    <option value="czk">CZK</option>
+    <option value="djf">DJF</option>
+    <option value="dkk">DKK</option>
+    <option value="dop">DOP</option>
+    <option value="dzd">DZD</option>
+    <option value="egp">EGP</option>
+    <option value="ern">ERN</option>
+    <option value="etb">ETB</option>
+    <option value="eur">EUR</option>
+    <option value="fjd">FJD</option>
+    <option value="fkp">FKP</option>
+    <option value="fok">FOK</option>
+    <option value="gbp">GBP</option>
+    <option value="gel">GEL</option>
+    <option value="ggp">GGP</option>
+    <option value="ghs">GHS</option>
+    <option value="gip">GIP</option>
+    <option value="gmd">GMD</option>
+    <option value="gnf">GNF</option>
+    <option value="gtq">GTQ</option>
+    <option value="gyd">GYD</option>
+    <option value="hkd">HKD</option>
+    <option value="hnl">HNL</option>
+    <option value="hrk">HRK</option>
+    <option value="0">HTG</option>
+    <option value="0">HUF</option>
+    <option value="0">IDR</option>
+    <option value="0">ILS</option>
+    <option value="0">IMP</option>
+    <option value="0">INR</option>
+    <option value="0">IQD</option>
+    <option value="0">IRR</option>
+    <option value="0">ISK</option>
+    <option value="0">JEP</option>
+    <option value="0">JMD</option>
+    <option value="0">JOD</option>
+    <option value="0">JPY</option>
+    <option value="0">KES</option>
+    <option value="0">KGS</option>
+    <option value="0">KHR</option>
+    <option value="0">KID</option>
+    <option value="0">KMF</option>
+    <option value="0">KRW</option>
+    <option value="0">KWD</option>
+    <option value="0">KYD</option>
+    <option value="0">KZT</option>
+    <option value="0">LAK</option>
+    <option value="0">LBP</option>
+    <option value="0">LKR</option>
+    <option value="0">LRD</option>
+    <option value="0">LSL</option>
+    <option value="0">LYD</option>
+    <option value="0">MAD</option>
+    <option value="0">MDL</option>
+    <option value="0">MGA</option>
+    <option value="0">MKD</option>
+    <option value="0">MMK</option>
+    <option value="0">MNT</option>
+    <option value="0">MOP</option>
+    <option value="0">MRU</option>
+    <option value="0">MUR</option>
+    <option value="0">MVR</option>
+    <option value="0">MWK</option>
+    <option value="0">MXN</option>
+    <option value="0">MYR</option>
+    <option value="0">MZN</option>
+    <option value="0">NAD</option>
+    <option value="0">NGN</option>
+    <option value="0">NIO</option>
+    <option value="0">NOK</option>
+    <option value="0">NPR</option>
+    <option value="0">NZD</option>
+    <option value="0">OMR</option>
+    <option value="0">PAB</option>
+    <option value="pen">PEN</option>
+    <option value="pgk">PGK</option>
+    <option value="php">PHP</option>
+    <option value="pkr">PKR</option>
+    <option value="pln">PLN</option>
+    <option value="pyg">PYG</option>
+    <option value="qar">QAR</option>
+    <option value="ron">RON</option>
+    <option value="rsd">RSD</option>
+    <option value="rub">RUB</option>
+    <option value="rwf">RWF</option>
+    <option value="sar">SAR</option>
+    <option value="sbd">SBD</option>
+    <option value="scr">SCR</option>
+    <option value="sdg">SDG</option>
+    <option value="sek">SEK</option>
+    <option value="sgd">SGD</option>
+    <option value="shp">SHP</option>
+    <option value="sle">SLE</option>
+    <option value="sll">SLL</option>
+    <option value="sos">SOS</option>
+    <option value="srd">SRD</option>
+    <option value="ssp">SSP</option>
+    <option value="stn">STN</option>
+    <option value="syp">SYP</option>
+    <option value="szl">SZL</option>
+    <option value="thb">THB</option>
+    <option value="tjs">TJS</option>
+    <option value="tmt">TMT</option>
+    <option value="tnd">TND</option>
+    <option value="top">TOP</option>
+    <option value="try">TRY</option>
+    <option value="ttd">TTD</option>
+    <option value="tvd">TVD</option>
+    <option value="twd">TWD</option>
+    <option value="tzs">TZS</option>
+    <option value="uah">UAH</option>
+    <option value="ugx">UGX</option>
+    <option value="uyu">UYU</option>
+    <option value="uzs">UZS</option>
+    <option value="ves">VES</option>
+    <option value="vnd">VND</option>
+    <option value="vuv">VUV</option>
+    <option value="wst">WST</option>
+    <option value="xaf">XAF</option>
+    <option value="xcd">XCD</option>
+    <option value="xcg">XCG</option>
+    <option value="xdr">XDR</option>
+    <option value="xof">XOF</option>
+    <option value="xpf">XPF</option>
+    <option value="yer">YER</option>
+    <option value="zar">ZAR</option>
+    <option value="zmw">ZMW</option>
+    <option value="zwg">ZWG</option>
+    <option value="zwl">ZWL</option>
+  </select><br/>
+  <div id="result" style="display: none;">
+    Total Amount: <samp id="total"></samp><br/>
+
+  </div>
+  <button class="success" onclick="getRate()">Get Total</button>
+  <script>
+    async function getRate(){
+      const amount = document.getElementById('amount').value 
+      const Currency = document.getElementById('Currency').value
+      const apiUrl = `https://api.exchangerate-api.com/v4/latest/${Currency}`
+      const CurrencyData = await axios.get(apiUrl)
+      const ConversionRate = CurrencyData.data.rates.BDT
+      const total = amount*ConversionRate
+
+      document.getElementById('total').innerHTML = total
+      document.getElementById('result').style.display='block'
+
+      /* console.log(amount,Currency) */
+    }
+  </script>
+</body>
+</html>
